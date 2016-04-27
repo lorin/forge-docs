@@ -8,8 +8,8 @@ This assumes:
 
 
 I'm going to use `~/dev/simple-mod` as the location for the mod files, and
-`simplemod` as the name of the mod, in the org.lorinhochstein.simplemod group.
-
+`simplemod` as the name of the mod, in the `org.lorinhochstein.simplemod`
+package.
 
 
 ## Download the Mod Development Kit
