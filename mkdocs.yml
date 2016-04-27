@@ -1,1 +1,5 @@
 site_name: Minecraft Forge Unofficial Docs
+pages:
+    - index.md
+    - new-project.md
+theme: readthedocs
