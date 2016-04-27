@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>New project - Minecraft Forge Unofficial Docs</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "New project";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Minecraft Forge Unofficial Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">New project</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#creating-a-new-project">Creating a new project</a></li>
+                
+                    <li><a class="toctree-l4" href="#download-the-mod-development-kit">Download the Mod Development Kit</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-a-git-repo-unzip-the-files-and-commit-it">Create a git repo, unzip the files and commit it</a></li>
+                
+                    <li><a class="toctree-l4" href="#modify-buildgradle">Modify build.gradle</a></li>
+                
+                    <li><a class="toctree-l4" href="#download-artifacts-needed-for-decompiling-and-building">Download artifacts needed for decompiling and building</a></li>
+                
+                    <li><a class="toctree-l4" href="#open-the-project-in-intellij-idea">Open the project in IntelliJ IDEA</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-run-configuration">Create run configuration</a></li>
+                
+                    <li><a class="toctree-l4" href="#configure-run-configuration">Configure run configuration</a></li>
+                
+                    <li><a class="toctree-l4" href="#verify-the-mod-loaded-properly">Verify the mod loaded properly</a></li>
+                
+                    <li><a class="toctree-l4" href="#customize-the-metadata">Customize the metadata</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-java-package-and-file">Create Java package and file</a></li>
+                
+                    <li><a class="toctree-l4" href="#delete-examplemodjava">Delete ExampleMod.java</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Minecraft Forge Unofficial Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>New project</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="creating-a-new-project">Creating a new project</h1>
+<p>This assumes:</p>
+<ul>
+<li>Minecraft is installed</li>
+<li>Running on OS X</li>
+<li>IntelliJ is installed</li>
+</ul>
+<p>I'm going to use <code>~/dev/simple-mod</code> as the location for the mod files, and
+<code>simplemod</code> as the name of the mod, in the org.lorinhochstein.simplemod group.</p>
+<h2 id="download-the-mod-development-kit">Download the Mod Development Kit</h2>
+<ol>
+<li>
+<p>Go to <a href="http://files.minecraftforge.net/">http://files.minecraftforge.net/</a> and in the "Download Recommended" box,
+click the disk image labeled "Mdk".</p>
+</li>
+<li>
+<p>You'll likely get some horrible popup asking you to to download a new media
+player or somesuch. Cancel that download.</p>
+</li>
+<li>
+<p>Click the red SKIP button in the top right-hand corner.</p>
+</li>
+<li>
+<p>Download the file, should be named something like forge-1.8.9-11.15.1.1722-mdk.zip</p>
+</li>
+</ol>
+<h2 id="create-a-git-repo-unzip-the-files-and-commit-it">Create a git repo, unzip the files and commit it</h2>
+<pre><code>mkdir ~/dev/simple-mod
+cd ~/dev/simple-mod
+unzip ~/Downloads/forge-1.8.9-11.15.1.1722-mdk.zip
+git init
+echo classes &gt;&gt; .gitignore
+git add .
+git commit -m 'initial commit'
+</code></pre>
+
+<h2 id="modify-buildgradle">Modify build.gradle</h2>
+<p>Here are the changes I made:</p>
+<pre><code>diff --git a/build.gradle b/build.gradle
+index 8b83723..382a6bb 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -21,8 +21,8 @@ plugins {
+ }
+ */
+ version = &quot;1.0&quot;
+-group= &quot;com.yourname.modid&quot; // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+-archivesBaseName = &quot;modid&quot;
++group= &quot;org.lorinhochstein.simplemod&quot; // http://maven.apache.org/guides/mini/guide-naming-conventions.html
++archivesBaseName = &quot;simplemod&quot;
+
+ minecraft {
+     version = &quot;1.8.9-11.15.1.1722&quot;
+</code></pre>
+
+<h2 id="download-artifacts-needed-for-decompiling-and-building">Download artifacts needed for decompiling and building</h2>
+<pre><code>./gradlew setupDecompWorkspace
+</code></pre>
+
+<h2 id="open-the-project-in-intellij-idea">Open the project in IntelliJ IDEA</h2>
+<pre><code>idea .
+</code></pre>
+
+<ol>
+<li>Brings up the "Import Project from Gradle" dialog.</li>
+<li>Click "OK" at bottom-right.</li>
+</ol>
+<h2 id="create-run-configuration">Create run configuration</h2>
+<p>Exit IntelliJ IDEA, then do:</p>
+<pre><code>./gradlew genIntellijRuns
+</code></pre>
+
+<h2 id="configure-run-configuration">Configure run configuration</h2>
+<ol>
+<li>Launch IntelliJ IDEA loaded with the project</li>
+<li>In the "Run configurations" dropdown at the top-right of IDEA, cilck on the down
+   arrow and choose "Edit Configurations..."</li>
+<li>Choose "Minecraft Client" in the left-hand pane</li>
+<li>For "Use classpath of module", click the dropdown and choose
+   "simple-mod_main"</li>
+</ol>
+<p><img alt="Screen shot" src="../img/run-config.png" /></p>
+<p>Once this is done:</p>
+<ol>
+<li>Click "OK" to dismiss the dialog</li>
+<li>Run the "Minecraft Client" configuration.</li>
+</ol>
+<p>This should load Minecraft.</p>
+<h2 id="verify-the-mod-loaded-properly">Verify the mod loaded properly</h2>
+<ol>
+<li>Click the "Mods" button in the Minecraft dialog.</li>
+<li>Choose "Example Mod" in the scroller on the right</li>
+</ol>
+<p>Dialog should look like:</p>
+<p><img alt="Screen shot" src="../img/mod-dialog.png" /></p>
+<h2 id="customize-the-metadata">Customize the metadata</h2>
+<p>See also <a href="https://github.com/MinecraftForge/FML/wiki/FML-mod-information-file">official docs on FML mod information file</a>.</p>
+<p>Edt <code>src/main/resources/mcmod.info</code>. Mine looks like:</p>
+<pre><code>diff --git a/src/main/resources/mcmod.info b/src/main/resources/mcmod.info
+index f480667..53350db 100644
+--- a/src/main/resources/mcmod.info
++++ b/src/main/resources/mcmod.info
+@@ -1,14 +1,14 @@
+ [
+ {
+-  &quot;modid&quot;: &quot;examplemod&quot;,
+-  &quot;name&quot;: &quot;Example Mod&quot;,
+-  &quot;description&quot;: &quot;Example placeholder mod.&quot;,
+-  &quot;version&quot;: &quot;${version}&quot;,
+-  &quot;mcversion&quot;: &quot;${mcversion}&quot;,
++  &quot;modid&quot;: &quot;simplemod&quot;,
++  &quot;name&quot;: &quot;Simple Mod&quot;,
++  &quot;description&quot;: &quot;A simple mod example&quot;,
++  &quot;version&quot;: &quot;1.0&quot;,
++  &quot;mcversion&quot;: &quot;1.8.9&quot;,
+   &quot;url&quot;: &quot;&quot;,
+   &quot;updateUrl&quot;: &quot;&quot;,
+-  &quot;authorList&quot;: [&quot;ExampleDude&quot;],
+-  &quot;credits&quot;: &quot;The Forge and FML guys, for making this example&quot;,
++  &quot;authorList&quot;: [&quot;Lorin Hochstein&quot;],
++  &quot;credits&quot;: &quot;&quot;,
+   &quot;logoFile&quot;: &quot;&quot;,
+   &quot;screenshots&quot;: [],
+   &quot;dependencies&quot;: []
+</code></pre>
+
+<h2 id="create-java-package-and-file">Create Java package and file</h2>
+<p>We need an org.lorinhochstein.simplemod.SimpleMod Java
+class.</p>
+<ol>
+<li>View &gt; Tool Windows &gt; Project</li>
+<li>Expand simple-mod &gt; src &gt; main &gt; java</li>
+<li>Right-click on java</li>
+<li>New &gt; Package</li>
+<li>Type <code>org.lorinhochstein.simplemod</code> and click OK</li>
+<li>Right-click on org.lorinhochstein.simplemod</li>
+<li>New &gt; Java Class</li>
+<li>Type <code>SimpleMod</code> and click OK</li>
+<li>Write an initial no-op implementation:</li>
+</ol>
+<pre><code>package org.lorinhochstein.simplemod;
+
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+
+@Mod(modid = SimpleMod.MODID, version = SimpleMod.VERSION)
+public class SimpleMod {
+    public static final String MODID = &quot;simplemod&quot;;
+    public static final String VERSION = &quot;1.0&quot;;
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+        // nothing here yet
+    }
+}
+</code></pre>
+
+<h2 id="delete-examplemodjava">Delete ExampleMod.java</h2>
+<p>Delete <code>src/main/java/com/example/examplemod/ExampleMod.java</code>. Easiest is to
+click on it in IDEA and hit the "delete" key.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+
+</body>
+</html>
