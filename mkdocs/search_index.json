@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/",
-            "text": "Minecraft Forge Unofficial Documentation\n\n\n\n\nCreating a new project\n\n\n\n\nSee also:\n\n\n\n\nOfficial documentation\n\n\nModder support",
+            "text": "Minecraft Forge Unofficial Documentation\n\n\nThese docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.\n\n\n\n\nCreating a new project\n\n\n\n\nSee also:\n\n\n\n\nOfficial documentation\n\n\nModder support\n\n\nThis github repo",
             "title": "Home"
         },
         {
             "location": "/#minecraft-forge-unofficial-documentation",
-            "text": "Creating a new project   See also:   Official documentation  Modder support",
+            "text": "These docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.   Creating a new project   See also:   Official documentation  Modder support  This github repo",
             "title": "Minecraft Forge Unofficial Documentation"
         },
         {
