@@ -6,7 +6,7 @@ serve:
 
 docs:
 	@echo "Generating docs and switching to gh-pages branch"
-	mkdocs build
+	mkdocs build --clean
 	git stash save -u
 	git checkout gh-pages
 	git rm -r .
