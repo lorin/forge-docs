@@ -1,78 +1,78 @@
 {
     "docs": [
         {
-            "location": "/",
-            "text": "Minecraft Forge Unofficial Documentation\n\n\nThese docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.\n\n\n\n\nCreating a new project\n\n\n\n\nSee also:\n\n\n\n\nOfficial documentation\n\n\nModder support\n\n\nThis github repo",
+            "location": "/", 
+            "text": "Minecraft Forge Unofficial Documentation\n\n\nThese docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.\n\n\n\n\nCreating a new project\n\n\n\n\nSee also:\n\n\n\n\nOfficial documentation\n\n\nModder support\n\n\nThis github repo", 
             "title": "Home"
-        },
+        }, 
         {
-            "location": "/#minecraft-forge-unofficial-documentation",
-            "text": "These docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.   Creating a new project   See also:   Official documentation  Modder support  This github repo",
+            "location": "/#minecraft-forge-unofficial-documentation", 
+            "text": "These docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.   Creating a new project   See also:   Official documentation  Modder support  This github repo", 
             "title": "Minecraft Forge Unofficial Documentation"
-        },
+        }, 
         {
-            "location": "/new-project/",
-            "text": "Creating a new project\n\n\nThis assumes:\n\n\n\n\nMinecraft is installed\n\n\nRunning on OS X\n\n\nIntelliJ is installed\n\n\n\n\nI'm going to use \n~/dev/simple-mod\n as the location for the mod files, and\n\nsimplemod\n as the name of the mod, in the \norg.lorinhochstein.simplemod\n\npackage.\n\n\nDownload the Mod Development Kit\n\n\n\n\n\n\nGo to \nhttp://files.minecraftforge.net/\n and in the \"Download Recommended\" box,\nclick the disk image labeled \"Mdk\".\n\n\n\n\n\n\nYou'll likely get some horrible popup asking you to to download a new media\nplayer or somesuch. Cancel that download.\n\n\n\n\n\n\nClick the red SKIP button in the top right-hand corner.\n\n\n\n\n\n\nDownload the file, should be named something like forge-1.8.9-11.15.1.1722-mdk.zip\n\n\n\n\n\n\nCreate a git repo, unzip the files and commit it\n\n\nmkdir ~/dev/simple-mod\ncd ~/dev/simple-mod\nunzip ~/Downloads/forge-1.8.9-11.15.1.1722-mdk.zip\ngit init\necho classes >> .gitignore\ngit add .\ngit commit -m 'initial commit'\n\n\n\n\nModify build.gradle\n\n\nHere are the changes I made:\n\n\ndiff --git a/build.gradle b/build.gradle\nindex 8b83723..382a6bb 100644\n--- a/build.gradle\n+++ b/build.gradle\n@@ -21,8 +21,8 @@ plugins {\n }\n */\n version = \"1.0\"\n-group= \"com.yourname.modid\" // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n-archivesBaseName = \"modid\"\n+group= \"org.lorinhochstein.simplemod\" // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n+archivesBaseName = \"simplemod\"\n\n minecraft {\n     version = \"1.8.9-11.15.1.1722\"\n\n\n\n\nDownload artifacts needed for decompiling and building\n\n\n./gradlew setupDecompWorkspace\n\n\n\n\nOpen the project in IntelliJ IDEA\n\n\nidea .\n\n\n\n\n\n\nBrings up the \"Import Project from Gradle\" dialog.\n\n\nClick \"OK\" at bottom-right.\n\n\n\n\nCreate run configuration\n\n\nExit IntelliJ IDEA, then do:\n\n\n./gradlew genIntellijRuns\n\n\n\n\nConfigure run configuration\n\n\n\n\nLaunch IntelliJ IDEA loaded with the project\n\n\nIn the \"Run configurations\" dropdown at the top-right of IDEA, cilck on the down\n   arrow and choose \"Edit Configurations...\"\n\n\nChoose \"Minecraft Client\" in the left-hand pane\n\n\nFor \"Use classpath of module\", click the dropdown and choose\n   \"simple-mod_main\"\n\n\n\n\n\n\nOnce this is done:\n\n\n\n\nClick \"OK\" to dismiss the dialog\n\n\nRun the \"Minecraft Client\" configuration.\n\n\n\n\nThis should load Minecraft.\n\n\nVerify the mod loaded properly\n\n\n\n\nClick the \"Mods\" button in the Minecraft dialog.\n\n\nChoose \"Example Mod\" in the scroller on the right\n\n\n\n\nDialog should look like:\n\n\n\n\nCustomize the metadata\n\n\nSee also \nofficial docs on FML mod information file\n.\n\n\nEdt \nsrc/main/resources/mcmod.info\n. Mine looks like:\n\n\ndiff --git a/src/main/resources/mcmod.info b/src/main/resources/mcmod.info\nindex f480667..53350db 100644\n--- a/src/main/resources/mcmod.info\n+++ b/src/main/resources/mcmod.info\n@@ -1,14 +1,14 @@\n [\n {\n-  \"modid\": \"examplemod\",\n-  \"name\": \"Example Mod\",\n-  \"description\": \"Example placeholder mod.\",\n-  \"version\": \"${version}\",\n-  \"mcversion\": \"${mcversion}\",\n+  \"modid\": \"simplemod\",\n+  \"name\": \"Simple Mod\",\n+  \"description\": \"A simple mod example\",\n+  \"version\": \"1.0\",\n+  \"mcversion\": \"1.8.9\",\n   \"url\": \"\",\n   \"updateUrl\": \"\",\n-  \"authorList\": [\"ExampleDude\"],\n-  \"credits\": \"The Forge and FML guys, for making this example\",\n+  \"authorList\": [\"Lorin Hochstein\"],\n+  \"credits\": \"\",\n   \"logoFile\": \"\",\n   \"screenshots\": [],\n   \"dependencies\": []\n\n\n\n\nCreate Java package and file\n\n\nWe need an org.lorinhochstein.simplemod.SimpleMod Java\nclass.\n\n\n\n\nView > Tool Windows > Project\n\n\nExpand simple-mod > src > main > java\n\n\nRight-click on java\n\n\nNew > Package\n\n\nType \norg.lorinhochstein.simplemod\n and click OK\n\n\nRight-click on org.lorinhochstein.simplemod\n\n\nNew > Java Class\n\n\nType \nSimpleMod\n and click OK\n\n\nWrite an initial no-op implementation:\n\n\n\n\npackage org.lorinhochstein.simplemod;\n\nimport net.minecraftforge.fml.common.Mod;\nimport net.minecraftforge.fml.common.event.FMLInitializationEvent;\n\n@Mod(modid = SimpleMod.MODID, version = SimpleMod.VERSION)\npublic class SimpleMod {\n    public static final String MODID = \"simplemod\";\n    public static final String VERSION = \"1.0\";\n\n    @Mod.EventHandler\n    public void init(FMLInitializationEvent event)\n    {\n        // nothing here yet\n    }\n}\n\n\n\n\nDelete ExampleMod.java\n\n\nDelete \nsrc/main/java/com/example/examplemod/ExampleMod.java\n. Easiest is to\nclick on it in IDEA and hit the \"delete\" key.",
+            "location": "/new-project/", 
+            "text": "Creating a new project\n\n\nThis assumes:\n\n\n\n\nMinecraft is installed\n\n\nRunning on macOS\n\n\nIntelliJ IDEA is installed\n\n\n\n\nI'm going to use \n~/dev/simple-mod\n as the location for the mod files, and\n\nsimplemod\n as the name of the mod, in the \norg.lorinhochstein.simplemod\n\npackage.\n\n\nDownload the Mod Development Kit\n\n\n\n\n\n\nGo to \nhttp://files.minecraftforge.net/\n and in the \"Download Recommended\" box,\nclick the icon labeled \"Mdk\".\n\n\n\n\n\n\nYou'll likely get some horrible popup asking you to to download a new media\nplayer or somesuch. Cancel that download.\n\n\n\n\n\n\nClick the red SKIP button in the top right-hand corner.\n\n\n\n\n\n\nDownload the file, should be named something like forge-1.8.9-11.15.1.1722-mdk.zip\n\n\n\n\n\n\nCreate a git repo, unzip the files and commit it\n\n\nmkdir ~/dev/simple-mod\ncd ~/dev/simple-mod\nunzip ~/Downloads/forge-1.8.9-11.15.1.1722-mdk.zip\ngit init\necho classes \n .gitignore\ngit add .\ngit commit -m 'initial commit'\n\n\n\n\nModify build.gradle\n\n\nHere are the changes I made:\n\n\ndiff --git a/build.gradle b/build.gradle\nindex 8b83723..382a6bb 100644\n--- a/build.gradle\n+++ b/build.gradle\n@@ -21,8 +21,8 @@ plugins {\n }\n */\n version = \n1.0\n\n-group= \ncom.yourname.modid\n // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n-archivesBaseName = \nmodid\n\n+group= \norg.lorinhochstein.simplemod\n // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n+archivesBaseName = \nsimplemod\n\n\n minecraft {\n     version = \n1.8.9-11.15.1.1722\n\n\n\n\n\nDownload artifacts needed for decompiling and building\n\n\n./gradlew setupDecompWorkspace\n\n\n\n\nOpen the project in IntelliJ IDEA\n\n\nidea .\n\n\n\n\n\n\nBrings up the \"Import Project from Gradle\" dialog.\n\n\nClick \"OK\" at bottom-right.\n\n\n\n\nCreate run configuration\n\n\nExit IntelliJ IDEA, then do:\n\n\n./gradlew genIntellijRuns\n\n\n\n\nConfigure run configuration\n\n\n\n\nLaunch IntelliJ IDEA loaded with the project\n\n\nIn the \"Run configurations\" dropdown at the top-right of IDEA, cilck on the down\n   arrow and choose \"Edit Configurations...\"\n\n\nChoose \"Minecraft Client\" in the left-hand pane\n\n\nFor \"Use classpath of module\", click the dropdown and choose\n   \"simple-mod_main\"\n\n\n\n\n\n\nOnce this is done:\n\n\n\n\nClick \"OK\" to dismiss the dialog\n\n\nRun the \"Minecraft Client\" configuration.\n\n\n\n\nThis should load Minecraft.\n\n\nVerify the mod loaded properly\n\n\n\n\nClick the \"Mods\" button in the Minecraft dialog.\n\n\nChoose \"Example Mod\" in the scroller on the right\n\n\n\n\nDialog should look like:\n\n\n\n\nCustomize the metadata\n\n\nSee also \nofficial docs on FML mod information file\n.\n\n\nEdt \nsrc/main/resources/mcmod.info\n. Mine looks like:\n\n\ndiff --git a/src/main/resources/mcmod.info b/src/main/resources/mcmod.info\nindex f480667..53350db 100644\n--- a/src/main/resources/mcmod.info\n+++ b/src/main/resources/mcmod.info\n@@ -1,14 +1,14 @@\n [\n {\n-  \nmodid\n: \nexamplemod\n,\n-  \nname\n: \nExample Mod\n,\n-  \ndescription\n: \nExample placeholder mod.\n,\n-  \nversion\n: \n${version}\n,\n-  \nmcversion\n: \n${mcversion}\n,\n+  \nmodid\n: \nsimplemod\n,\n+  \nname\n: \nSimple Mod\n,\n+  \ndescription\n: \nA simple mod example\n,\n+  \nversion\n: \n1.0\n,\n+  \nmcversion\n: \n1.8.9\n,\n   \nurl\n: \n,\n   \nupdateUrl\n: \n,\n-  \nauthorList\n: [\nExampleDude\n],\n-  \ncredits\n: \nThe Forge and FML guys, for making this example\n,\n+  \nauthorList\n: [\nLorin Hochstein\n],\n+  \ncredits\n: \n,\n   \nlogoFile\n: \n,\n   \nscreenshots\n: [],\n   \ndependencies\n: []\n\n\n\n\nCreate Java package and file\n\n\nWe need an org.lorinhochstein.simplemod.SimpleMod Java\nclass.\n\n\n\n\nView \n Tool Windows \n Project\n\n\nExpand simple-mod \n src \n main \n java\n\n\nRight-click on java\n\n\nNew \n Package\n\n\nType \norg.lorinhochstein.simplemod\n and click OK\n\n\nRight-click on org.lorinhochstein.simplemod\n\n\nNew \n Java Class\n\n\nType \nSimpleMod\n and click OK\n\n\nWrite an initial no-op implementation:\n\n\n\n\npackage org.lorinhochstein.simplemod;\n\nimport net.minecraftforge.fml.common.Mod;\nimport net.minecraftforge.fml.common.event.FMLInitializationEvent;\n\n@Mod(modid = SimpleMod.MODID, version = SimpleMod.VERSION)\npublic class SimpleMod {\n    public static final String MODID = \nsimplemod\n;\n    public static final String VERSION = \n1.0\n;\n\n    @Mod.EventHandler\n    public void init(FMLInitializationEvent event)\n    {\n        // nothing here yet\n    }\n}\n\n\n\n\nDelete ExampleMod.java\n\n\nDelete \nsrc/main/java/com/example/examplemod/ExampleMod.java\n. Easiest is to\nclick on it in IDEA and hit the \"delete\" key.", 
             "title": "New project"
-        },
+        }, 
         {
-            "location": "/new-project/#creating-a-new-project",
-            "text": "This assumes:   Minecraft is installed  Running on OS X  IntelliJ is installed   I'm going to use  ~/dev/simple-mod  as the location for the mod files, and simplemod  as the name of the mod, in the  org.lorinhochstein.simplemod \npackage.",
+            "location": "/new-project/#creating-a-new-project", 
+            "text": "This assumes:   Minecraft is installed  Running on macOS  IntelliJ IDEA is installed   I'm going to use  ~/dev/simple-mod  as the location for the mod files, and simplemod  as the name of the mod, in the  org.lorinhochstein.simplemod \npackage.", 
             "title": "Creating a new project"
-        },
+        }, 
         {
-            "location": "/new-project/#download-the-mod-development-kit",
-            "text": "Go to  http://files.minecraftforge.net/  and in the \"Download Recommended\" box,\nclick the disk image labeled \"Mdk\".    You'll likely get some horrible popup asking you to to download a new media\nplayer or somesuch. Cancel that download.    Click the red SKIP button in the top right-hand corner.    Download the file, should be named something like forge-1.8.9-11.15.1.1722-mdk.zip",
+            "location": "/new-project/#download-the-mod-development-kit", 
+            "text": "Go to  http://files.minecraftforge.net/  and in the \"Download Recommended\" box,\nclick the icon labeled \"Mdk\".    You'll likely get some horrible popup asking you to to download a new media\nplayer or somesuch. Cancel that download.    Click the red SKIP button in the top right-hand corner.    Download the file, should be named something like forge-1.8.9-11.15.1.1722-mdk.zip", 
             "title": "Download the Mod Development Kit"
-        },
+        }, 
         {
-            "location": "/new-project/#create-a-git-repo-unzip-the-files-and-commit-it",
-            "text": "mkdir ~/dev/simple-mod\ncd ~/dev/simple-mod\nunzip ~/Downloads/forge-1.8.9-11.15.1.1722-mdk.zip\ngit init\necho classes >> .gitignore\ngit add .\ngit commit -m 'initial commit'",
+            "location": "/new-project/#create-a-git-repo-unzip-the-files-and-commit-it", 
+            "text": "mkdir ~/dev/simple-mod\ncd ~/dev/simple-mod\nunzip ~/Downloads/forge-1.8.9-11.15.1.1722-mdk.zip\ngit init\necho classes   .gitignore\ngit add .\ngit commit -m 'initial commit'", 
             "title": "Create a git repo, unzip the files and commit it"
-        },
+        }, 
         {
-            "location": "/new-project/#modify-buildgradle",
-            "text": "Here are the changes I made:  diff --git a/build.gradle b/build.gradle\nindex 8b83723..382a6bb 100644\n--- a/build.gradle\n+++ b/build.gradle\n@@ -21,8 +21,8 @@ plugins {\n }\n */\n version = \"1.0\"\n-group= \"com.yourname.modid\" // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n-archivesBaseName = \"modid\"\n+group= \"org.lorinhochstein.simplemod\" // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n+archivesBaseName = \"simplemod\"\n\n minecraft {\n     version = \"1.8.9-11.15.1.1722\"",
+            "location": "/new-project/#modify-buildgradle", 
+            "text": "Here are the changes I made:  diff --git a/build.gradle b/build.gradle\nindex 8b83723..382a6bb 100644\n--- a/build.gradle\n+++ b/build.gradle\n@@ -21,8 +21,8 @@ plugins {\n }\n */\n version =  1.0 \n-group=  com.yourname.modid  // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n-archivesBaseName =  modid \n+group=  org.lorinhochstein.simplemod  // http://maven.apache.org/guides/mini/guide-naming-conventions.html\n+archivesBaseName =  simplemod \n\n minecraft {\n     version =  1.8.9-11.15.1.1722", 
             "title": "Modify build.gradle"
-        },
+        }, 
         {
-            "location": "/new-project/#download-artifacts-needed-for-decompiling-and-building",
-            "text": "./gradlew setupDecompWorkspace",
+            "location": "/new-project/#download-artifacts-needed-for-decompiling-and-building", 
+            "text": "./gradlew setupDecompWorkspace", 
             "title": "Download artifacts needed for decompiling and building"
-        },
+        }, 
         {
-            "location": "/new-project/#open-the-project-in-intellij-idea",
-            "text": "idea .   Brings up the \"Import Project from Gradle\" dialog.  Click \"OK\" at bottom-right.",
+            "location": "/new-project/#open-the-project-in-intellij-idea", 
+            "text": "idea .   Brings up the \"Import Project from Gradle\" dialog.  Click \"OK\" at bottom-right.", 
             "title": "Open the project in IntelliJ IDEA"
-        },
+        }, 
         {
-            "location": "/new-project/#create-run-configuration",
-            "text": "Exit IntelliJ IDEA, then do:  ./gradlew genIntellijRuns",
+            "location": "/new-project/#create-run-configuration", 
+            "text": "Exit IntelliJ IDEA, then do:  ./gradlew genIntellijRuns", 
             "title": "Create run configuration"
-        },
+        }, 
         {
-            "location": "/new-project/#configure-run-configuration",
-            "text": "Launch IntelliJ IDEA loaded with the project  In the \"Run configurations\" dropdown at the top-right of IDEA, cilck on the down\n   arrow and choose \"Edit Configurations...\"  Choose \"Minecraft Client\" in the left-hand pane  For \"Use classpath of module\", click the dropdown and choose\n   \"simple-mod_main\"    Once this is done:   Click \"OK\" to dismiss the dialog  Run the \"Minecraft Client\" configuration.   This should load Minecraft.",
+            "location": "/new-project/#configure-run-configuration", 
+            "text": "Launch IntelliJ IDEA loaded with the project  In the \"Run configurations\" dropdown at the top-right of IDEA, cilck on the down\n   arrow and choose \"Edit Configurations...\"  Choose \"Minecraft Client\" in the left-hand pane  For \"Use classpath of module\", click the dropdown and choose\n   \"simple-mod_main\"    Once this is done:   Click \"OK\" to dismiss the dialog  Run the \"Minecraft Client\" configuration.   This should load Minecraft.", 
             "title": "Configure run configuration"
-        },
+        }, 
         {
-            "location": "/new-project/#verify-the-mod-loaded-properly",
-            "text": "Click the \"Mods\" button in the Minecraft dialog.  Choose \"Example Mod\" in the scroller on the right   Dialog should look like:",
+            "location": "/new-project/#verify-the-mod-loaded-properly", 
+            "text": "Click the \"Mods\" button in the Minecraft dialog.  Choose \"Example Mod\" in the scroller on the right   Dialog should look like:", 
             "title": "Verify the mod loaded properly"
-        },
+        }, 
         {
-            "location": "/new-project/#customize-the-metadata",
-            "text": "See also  official docs on FML mod information file .  Edt  src/main/resources/mcmod.info . Mine looks like:  diff --git a/src/main/resources/mcmod.info b/src/main/resources/mcmod.info\nindex f480667..53350db 100644\n--- a/src/main/resources/mcmod.info\n+++ b/src/main/resources/mcmod.info\n@@ -1,14 +1,14 @@\n [\n {\n-  \"modid\": \"examplemod\",\n-  \"name\": \"Example Mod\",\n-  \"description\": \"Example placeholder mod.\",\n-  \"version\": \"${version}\",\n-  \"mcversion\": \"${mcversion}\",\n+  \"modid\": \"simplemod\",\n+  \"name\": \"Simple Mod\",\n+  \"description\": \"A simple mod example\",\n+  \"version\": \"1.0\",\n+  \"mcversion\": \"1.8.9\",\n   \"url\": \"\",\n   \"updateUrl\": \"\",\n-  \"authorList\": [\"ExampleDude\"],\n-  \"credits\": \"The Forge and FML guys, for making this example\",\n+  \"authorList\": [\"Lorin Hochstein\"],\n+  \"credits\": \"\",\n   \"logoFile\": \"\",\n   \"screenshots\": [],\n   \"dependencies\": []",
+            "location": "/new-project/#customize-the-metadata", 
+            "text": "See also  official docs on FML mod information file .  Edt  src/main/resources/mcmod.info . Mine looks like:  diff --git a/src/main/resources/mcmod.info b/src/main/resources/mcmod.info\nindex f480667..53350db 100644\n--- a/src/main/resources/mcmod.info\n+++ b/src/main/resources/mcmod.info\n@@ -1,14 +1,14 @@\n [\n {\n-   modid :  examplemod ,\n-   name :  Example Mod ,\n-   description :  Example placeholder mod. ,\n-   version :  ${version} ,\n-   mcversion :  ${mcversion} ,\n+   modid :  simplemod ,\n+   name :  Simple Mod ,\n+   description :  A simple mod example ,\n+   version :  1.0 ,\n+   mcversion :  1.8.9 ,\n    url :  ,\n    updateUrl :  ,\n-   authorList : [ ExampleDude ],\n-   credits :  The Forge and FML guys, for making this example ,\n+   authorList : [ Lorin Hochstein ],\n+   credits :  ,\n    logoFile :  ,\n    screenshots : [],\n    dependencies : []", 
             "title": "Customize the metadata"
-        },
+        }, 
         {
-            "location": "/new-project/#create-java-package-and-file",
-            "text": "We need an org.lorinhochstein.simplemod.SimpleMod Java\nclass.   View > Tool Windows > Project  Expand simple-mod > src > main > java  Right-click on java  New > Package  Type  org.lorinhochstein.simplemod  and click OK  Right-click on org.lorinhochstein.simplemod  New > Java Class  Type  SimpleMod  and click OK  Write an initial no-op implementation:   package org.lorinhochstein.simplemod;\n\nimport net.minecraftforge.fml.common.Mod;\nimport net.minecraftforge.fml.common.event.FMLInitializationEvent;\n\n@Mod(modid = SimpleMod.MODID, version = SimpleMod.VERSION)\npublic class SimpleMod {\n    public static final String MODID = \"simplemod\";\n    public static final String VERSION = \"1.0\";\n\n    @Mod.EventHandler\n    public void init(FMLInitializationEvent event)\n    {\n        // nothing here yet\n    }\n}",
+            "location": "/new-project/#create-java-package-and-file", 
+            "text": "We need an org.lorinhochstein.simplemod.SimpleMod Java\nclass.   View   Tool Windows   Project  Expand simple-mod   src   main   java  Right-click on java  New   Package  Type  org.lorinhochstein.simplemod  and click OK  Right-click on org.lorinhochstein.simplemod  New   Java Class  Type  SimpleMod  and click OK  Write an initial no-op implementation:   package org.lorinhochstein.simplemod;\n\nimport net.minecraftforge.fml.common.Mod;\nimport net.minecraftforge.fml.common.event.FMLInitializationEvent;\n\n@Mod(modid = SimpleMod.MODID, version = SimpleMod.VERSION)\npublic class SimpleMod {\n    public static final String MODID =  simplemod ;\n    public static final String VERSION =  1.0 ;\n\n    @Mod.EventHandler\n    public void init(FMLInitializationEvent event)\n    {\n        // nothing here yet\n    }\n}", 
             "title": "Create Java package and file"
-        },
+        }, 
         {
-            "location": "/new-project/#delete-examplemodjava",
-            "text": "Delete  src/main/java/com/example/examplemod/ExampleMod.java . Easiest is to\nclick on it in IDEA and hit the \"delete\" key.",
+            "location": "/new-project/#delete-examplemodjava", 
+            "text": "Delete  src/main/java/com/example/examplemod/ExampleMod.java . Easiest is to\nclick on it in IDEA and hit the \"delete\" key.", 
             "title": "Delete ExampleMod.java"
         }
     ]

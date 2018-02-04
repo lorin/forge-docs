@@ -3,31 +3,28 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>New project - Minecraft Forge Unofficial Docs</title>
   
-
   <link rel="shortcut icon" href="../img/favicon.ico">
-
-  
+  <title>New project - Minecraft Forge Unofficial Docs</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-
   
   <script>
     // Current page data
     var mkdocs_page_name = "New project";
+    var mkdocs_page_input_path = "new-project.md";
+    var mkdocs_page_url = "/new-project/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
   
 </head>
 
@@ -47,50 +44,50 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
+	  
           
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="..">Home</a>
-        
-    </li>
-<li>
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
           
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href="./">New project</a>
-        
-            <ul>
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">New project</a>
+    <ul class="subnav">
             
-                <li class="toctree-l3"><a href="#creating-a-new-project">Creating a new project</a></li>
-                
-                    <li><a class="toctree-l4" href="#download-the-mod-development-kit">Download the Mod Development Kit</a></li>
-                
-                    <li><a class="toctree-l4" href="#create-a-git-repo-unzip-the-files-and-commit-it">Create a git repo, unzip the files and commit it</a></li>
-                
-                    <li><a class="toctree-l4" href="#modify-buildgradle">Modify build.gradle</a></li>
-                
-                    <li><a class="toctree-l4" href="#download-artifacts-needed-for-decompiling-and-building">Download artifacts needed for decompiling and building</a></li>
-                
-                    <li><a class="toctree-l4" href="#open-the-project-in-intellij-idea">Open the project in IntelliJ IDEA</a></li>
-                
-                    <li><a class="toctree-l4" href="#create-run-configuration">Create run configuration</a></li>
-                
-                    <li><a class="toctree-l4" href="#configure-run-configuration">Configure run configuration</a></li>
-                
-                    <li><a class="toctree-l4" href="#verify-the-mod-loaded-properly">Verify the mod loaded properly</a></li>
-                
-                    <li><a class="toctree-l4" href="#customize-the-metadata">Customize the metadata</a></li>
-                
-                    <li><a class="toctree-l4" href="#create-java-package-and-file">Create Java package and file</a></li>
-                
-                    <li><a class="toctree-l4" href="#delete-examplemodjava">Delete ExampleMod.java</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l2"><a href="#creating-a-new-project">Creating a new project</a></li>
+    
+        <ul>
         
-    </li>
-<li>
+            <li><a class="toctree-l3" href="#download-the-mod-development-kit">Download the Mod Development Kit</a></li>
+        
+            <li><a class="toctree-l3" href="#create-a-git-repo-unzip-the-files-and-commit-it">Create a git repo, unzip the files and commit it</a></li>
+        
+            <li><a class="toctree-l3" href="#modify-buildgradle">Modify build.gradle</a></li>
+        
+            <li><a class="toctree-l3" href="#download-artifacts-needed-for-decompiling-and-building">Download artifacts needed for decompiling and building</a></li>
+        
+            <li><a class="toctree-l3" href="#open-the-project-in-intellij-idea">Open the project in IntelliJ IDEA</a></li>
+        
+            <li><a class="toctree-l3" href="#create-run-configuration">Create run configuration</a></li>
+        
+            <li><a class="toctree-l3" href="#configure-run-configuration">Configure run configuration</a></li>
+        
+            <li><a class="toctree-l3" href="#verify-the-mod-loaded-properly">Verify the mod loaded properly</a></li>
+        
+            <li><a class="toctree-l3" href="#customize-the-metadata">Customize the metadata</a></li>
+        
+            <li><a class="toctree-l3" href="#create-java-package-and-file">Create Java package and file</a></li>
+        
+            <li><a class="toctree-l3" href="#delete-examplemodjava">Delete ExampleMod.java</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
           
         </ul>
       </div>
@@ -128,8 +125,8 @@
 <p>This assumes:</p>
 <ul>
 <li>Minecraft is installed</li>
-<li>Running on OS X</li>
-<li>IntelliJ is installed</li>
+<li>Running on macOS</li>
+<li>IntelliJ IDEA is installed</li>
 </ul>
 <p>I'm going to use <code>~/dev/simple-mod</code> as the location for the mod files, and
 <code>simplemod</code> as the name of the mod, in the <code>org.lorinhochstein.simplemod</code>
@@ -138,7 +135,7 @@ package.</p>
 <ol>
 <li>
 <p>Go to <a href="http://files.minecraftforge.net/">http://files.minecraftforge.net/</a> and in the "Download Recommended" box,
-click the disk image labeled "Mdk".</p>
+click the icon labeled "Mdk".</p>
 </li>
 <li>
 <p>You'll likely get some horrible popup asking you to to download a new media
@@ -313,10 +310,10 @@ click on it in IDEA and hit the "delete" key.</p>
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
@@ -325,6 +322,7 @@ click on it in IDEA and hit the "delete" key.</p>
       
     </span>
 </div>
+    <script src="../js/theme.js"></script>
 
 </body>
 </html>
