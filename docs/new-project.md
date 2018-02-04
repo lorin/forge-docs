@@ -3,8 +3,8 @@
 This assumes:
 
 * Minecraft is installed
-* Running on OS X
-* IntelliJ is installed
+* Running on macOS
+* IntelliJ IDEA is installed
 
 
 I'm going to use `~/dev/simple-mod` as the location for the mod files, and
@@ -15,7 +15,7 @@ package.
 ## Download the Mod Development Kit
 
 1. Go to <http://files.minecraftforge.net/> and in the "Download Recommended" box,
-click the disk image labeled "Mdk".
+click the icon labeled "Mdk".
 
 2. You'll likely get some horrible popup asking you to to download a new media
 player or somesuch. Cancel that download.
