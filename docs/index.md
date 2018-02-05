@@ -15,6 +15,6 @@ See also:
  * [This github repo][repo]
 
 [mcforge]: http://mcforge.readthedocs.org/
-[support]: http://www.minecraftforge.net/forum/index.php/board,73.0.html
+[support]: http://www.minecraftforge.net/forum/forum/70-modder-support/
 [repo]: http://github.com/lorin/forge-docs
 
