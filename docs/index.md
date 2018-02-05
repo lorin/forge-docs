@@ -7,6 +7,7 @@ things work.
 
 
 * [Creating a new project](new-project.md)
+* [Creating a new item](new-item.md)
 
 See also:
 

@@ -2,6 +2,8 @@
 
 [Items: official docs](http://mcforge.readthedocs.io/en/latest/items/items/)
 
+## Source code
+
 You need to create an event handler class to register new items. 
 
 Because it uses Java annotations, you don't need to explicitly register
@@ -33,10 +35,32 @@ public class EventHandler {
     }
 
     static Item getLemon() {
-        Item lemon = new Item();
-        lemon.setCreativeTab(CreativeTabs.FOOD);
-        lemon.setRegistryName("lemon");
-        return lemon;
+        return new Item()
+                .setCreativeTab(CreativeTabs.FOOD)
+                .setRegistryName("lemon")
+                .setUnlocalizedName("lemon");
     }
+}
+```
+
+## Name in inventory
+
+Here's how you set the name in the inventory (note that `item.<label>.name`,
+the `<label>` corresponds to the argument passed to `setUnlocalizedName`:
+
+```
+$ cat src/main/resources/assets/simplemod/lang/en_us.lang
+item.lemon.name=Lemon
+```
+
+## JSON file
+
+Minecraft will throw an exception if this JSON file is not present. I haven't
+been able to find docs yet on what goes in it, so I just put an empty json
+object:
+
+```
+$ cat  src/main/resources/assets/simplemod/models/item/lemon.json
+{
 }
 ```
