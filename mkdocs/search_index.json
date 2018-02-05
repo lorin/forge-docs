@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Minecraft Forge Unofficial Documentation\n\n\nThese docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.\n\n\n\n\nCreating a new project\n\n\n\n\nSee also:\n\n\n\n\nOfficial documentation\n\n\nModder support\n\n\nThis github repo", 
+            "text": "Minecraft Forge Unofficial Documentation\n\n\nThese docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.\n\n\n\n\nCreating a new project\n\n\nCreating a new item\n\n\n\n\nSee also:\n\n\n\n\nOfficial documentation\n\n\nModder support\n\n\nThis github repo", 
             "title": "Home"
         }, 
         {
             "location": "/#minecraft-forge-unofficial-documentation", 
-            "text": "These docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.   Creating a new project   See also:   Official documentation  Modder support  This github repo", 
+            "text": "These docs were born out of frustration with existing Minecraft\nForge documentation. I wrote it for myself as both a quick reference for\ncreating new Minecraft mods and to better document my understanding of how\nthings work.   Creating a new project  Creating a new item   See also:   Official documentation  Modder support  This github repo", 
             "title": "Minecraft Forge Unofficial Documentation"
         }, 
         {
@@ -74,6 +74,31 @@
             "location": "/new-project/#delete-examplemodjava", 
             "text": "Delete  src/main/java/com/example/examplemod/ExampleMod.java . Easiest is to\nclick on it in IDEA and hit the \"delete\" key.", 
             "title": "Delete ExampleMod.java"
+        }, 
+        {
+            "location": "/new-item/", 
+            "text": "Creating a new item\n\n\nItems: official docs\n\n\nSource code\n\n\nYou need to create an event handler class to register new items. \n\n\nBecause it uses Java annotations, you don't need to explicitly register\nthis class, and the name of the class and the method don't matter, as long as\nthe right annotations are used.\n\n\nHere's an example:\n\n\npackage org.lorinhochstein.simplemod;\n\nimport net.minecraft.creativetab.CreativeTabs;\nimport net.minecraft.item.Item;\nimport net.minecraftforge.event.RegistryEvent;\nimport net.minecraftforge.fml.common.Mod;\nimport net.minecraftforge.fml.common.eventhandler.SubscribeEvent;\n\nimport java.util.logging.Logger;\n\n\n@Mod.EventBusSubscriber\npublic class EventHandler {\n    static final Logger logger = Logger.getLogger(EventHandler.class.getName());\n\n    @SubscribeEvent\n    public static void registerItems(RegistryEvent.Register\nItem\n event) {\n        logger.info(\nregisterItems\n);\n        event.getRegistry().register(getLemon());\n    }\n\n    static Item getLemon() {\n        return new Item()\n                .setCreativeTab(CreativeTabs.FOOD)\n                .setRegistryName(\nlemon\n)\n                .setUnlocalizedName(\nlemon\n);\n    }\n}\n\n\n\n\nName in inventory\n\n\nHere's how you set the name in the inventory (note that \nitem.\nlabel\n.name\n,\nthe \nlabel\n corresponds to the argument passed to \nsetUnlocalizedName\n:\n\n\n$ cat src/main/resources/assets/simplemod/lang/en_us.lang\nitem.lemon.name=Lemon\n\n\n\n\nJSON file\n\n\nMinecraft will throw an exception if this JSON file is not present. I haven't\nbeen able to find docs yet on what goes in it, so I just put an empty json\nobject:\n\n\n$ cat  src/main/resources/assets/simplemod/models/item/lemon.json\n{\n}", 
+            "title": "New item"
+        }, 
+        {
+            "location": "/new-item/#creating-a-new-item", 
+            "text": "Items: official docs", 
+            "title": "Creating a new item"
+        }, 
+        {
+            "location": "/new-item/#source-code", 
+            "text": "You need to create an event handler class to register new items.   Because it uses Java annotations, you don't need to explicitly register\nthis class, and the name of the class and the method don't matter, as long as\nthe right annotations are used.  Here's an example:  package org.lorinhochstein.simplemod;\n\nimport net.minecraft.creativetab.CreativeTabs;\nimport net.minecraft.item.Item;\nimport net.minecraftforge.event.RegistryEvent;\nimport net.minecraftforge.fml.common.Mod;\nimport net.minecraftforge.fml.common.eventhandler.SubscribeEvent;\n\nimport java.util.logging.Logger;\n\n\n@Mod.EventBusSubscriber\npublic class EventHandler {\n    static final Logger logger = Logger.getLogger(EventHandler.class.getName());\n\n    @SubscribeEvent\n    public static void registerItems(RegistryEvent.Register Item  event) {\n        logger.info( registerItems );\n        event.getRegistry().register(getLemon());\n    }\n\n    static Item getLemon() {\n        return new Item()\n                .setCreativeTab(CreativeTabs.FOOD)\n                .setRegistryName( lemon )\n                .setUnlocalizedName( lemon );\n    }\n}", 
+            "title": "Source code"
+        }, 
+        {
+            "location": "/new-item/#name-in-inventory", 
+            "text": "Here's how you set the name in the inventory (note that  item. label .name ,\nthe  label  corresponds to the argument passed to  setUnlocalizedName :  $ cat src/main/resources/assets/simplemod/lang/en_us.lang\nitem.lemon.name=Lemon", 
+            "title": "Name in inventory"
+        }, 
+        {
+            "location": "/new-item/#json-file", 
+            "text": "Minecraft will throw an exception if this JSON file is not present. I haven't\nbeen able to find docs yet on what goes in it, so I just put an empty json\nobject:  $ cat  src/main/resources/assets/simplemod/models/item/lemon.json\n{\n}", 
+            "title": "JSON file"
         }
     ]
 }

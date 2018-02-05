@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>New item - Minecraft Forge Unofficial Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "New item";
+    var mkdocs_page_input_path = "new-item.md";
+    var mkdocs_page_url = "/new-item/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Minecraft Forge Unofficial Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../new-project/">New project</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">New item</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#creating-a-new-item">Creating a new item</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#source-code">Source code</a></li>
+        
+            <li><a class="toctree-l3" href="#name-in-inventory">Name in inventory</a></li>
+        
+            <li><a class="toctree-l3" href="#json-file">JSON file</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Minecraft Forge Unofficial Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>New item</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="creating-a-new-item">Creating a new item</h1>
+<p><a href="http://mcforge.readthedocs.io/en/latest/items/items/">Items: official docs</a></p>
+<h2 id="source-code">Source code</h2>
+<p>You need to create an event handler class to register new items. </p>
+<p>Because it uses Java annotations, you don't need to explicitly register
+this class, and the name of the class and the method don't matter, as long as
+the right annotations are used.</p>
+<p>Here's an example:</p>
+<pre><code class="java">package org.lorinhochstein.simplemod;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.util.logging.Logger;
+
+
+@Mod.EventBusSubscriber
+public class EventHandler {
+    static final Logger logger = Logger.getLogger(EventHandler.class.getName());
+
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register&lt;Item&gt; event) {
+        logger.info(&quot;registerItems&quot;);
+        event.getRegistry().register(getLemon());
+    }
+
+    static Item getLemon() {
+        return new Item()
+                .setCreativeTab(CreativeTabs.FOOD)
+                .setRegistryName(&quot;lemon&quot;)
+                .setUnlocalizedName(&quot;lemon&quot;);
+    }
+}
+</code></pre>
+
+<h2 id="name-in-inventory">Name in inventory</h2>
+<p>Here's how you set the name in the inventory (note that <code>item.&lt;label&gt;.name</code>,
+the <code>&lt;label&gt;</code> corresponds to the argument passed to <code>setUnlocalizedName</code>:</p>
+<pre><code>$ cat src/main/resources/assets/simplemod/lang/en_us.lang
+item.lemon.name=Lemon
+</code></pre>
+
+<h2 id="json-file">JSON file</h2>
+<p>Minecraft will throw an exception if this JSON file is not present. I haven't
+been able to find docs yet on what goes in it, so I just put an empty json
+object:</p>
+<pre><code>$ cat  src/main/resources/assets/simplemod/models/item/lemon.json
+{
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../new-project/" class="btn btn-neutral" title="New project"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../new-project/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
