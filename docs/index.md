@@ -12,10 +12,12 @@ things work.
 See also:
 
  * [Official documentation][mcforge]
+ * [Shadowfacts tutorial][shadowfacts]
  * [Modder support][support]
  * [This github repo][repo]
 
 [mcforge]: http://mcforge.readthedocs.org/
+[shadowfacts]: https://shadowfacts.net/tutorials/forge-modding-112/
 [support]: http://www.minecraftforge.net/forum/forum/70-modder-support/
 [repo]: http://github.com/lorin/forge-docs
 
